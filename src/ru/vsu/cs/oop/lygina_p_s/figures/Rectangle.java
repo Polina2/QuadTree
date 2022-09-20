@@ -1,4 +1,4 @@
-package ru.vsu.cs.oop.lygina_p_s;
+package ru.vsu.cs.oop.lygina_p_s.figures;
 
 public class Rectangle extends Figure {
     private final double x;
