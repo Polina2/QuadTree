@@ -22,4 +22,9 @@ public class Point extends Figure {
         return x >= rect.getX() && x <= rect.getX()+ rect.getWidth() &&
                 y >= rect.getY() && y <= rect.getY()+ rect.getHeight();
     }
+
+    @Override
+    public String toString(){
+        return "("+x+", "+y+')';
+    }
 }

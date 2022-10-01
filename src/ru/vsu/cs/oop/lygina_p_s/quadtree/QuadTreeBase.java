@@ -1,11 +1,14 @@
 package ru.vsu.cs.oop.lygina_p_s.quadtree;
 
-public class QuadTreeBase<T> {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class QuadTreeBase<T> {
     protected Node root;
 
     protected class Node {
         private T value;
-        private Node[] children;
+        private List<Node> children;
 
         public Node(T value) {
             this.value = value;
@@ -16,25 +19,72 @@ public class QuadTreeBase<T> {
             return value;
         }
 
-        public Node[] getChildren() {
-            return children;
+        public Node getChild(int index){
+            return children.get(index);
+        }
+
+        public void setChild(int index, Node value){
+            children.set(index, value);
+        }
+
+        public void createChildren(){
+            this.children = new ArrayList<>(4);
         }
 
         private void clear(){
-            for (int i = 0; i < children.length; i++){
-                children[i].clear();
-                children[i] = null;
+            for (int i = 0; i < children.size(); i++){
+                children.get(i).clear();
+                children.set(i, null);
             }
         }
     }
 
-    public QuadTreeBase(Node root) {
-        this.root = root;
+    public QuadTreeBase(T value) {
+        this.root = new Node(value);
+    }
+//abstract methods!!!!!!!!!!!!!
+    /*
+    @FunctionalInterface
+    public interface Visitor<T> {
+        List<T> visit(T value);
     }
 
-    public QuadTreeBase(){
+    public void leavesDfs(Visitor<T> visitor){
+        class Inner{
+            void dfs(Node node, Visitor<T> visitor1){
+                if (node.children != null){
+                    for (Node child : node.children){
+                        dfs(child, visitor1);
+                    }
+                } else {
+                    List<T> list = visitor1.visit(node.getValue());
+                    if (list != null) {
+                        node.createChildren();
+                        for (int i = 0; i < node.children.size(); i++) {
+                            node.children.set(i, new Node(list.get(i)));
+                        }
+                    }
+                }
+            }
+        }
+        new Inner().dfs(root, visitor);
     }
 
+    public T findValueDfs(Visitor<T> visitor){
+        class Inner{
+            T dfs(Node node, Visitor<T> visitor1){
+                if (node.children != null){
+                    for (Node child : node.children){
+                        dfs(child, visitor1);
+                    }
+                }
+                List<T> list = visitor1.visit(node.getValue());
+                return list.get(0);
+            }
+        }
+        return new Inner().dfs(root, visitor);
+    }
+*/
     public void clear(){
         root.clear();
     }

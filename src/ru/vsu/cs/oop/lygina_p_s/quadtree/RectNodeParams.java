@@ -6,12 +6,12 @@ import ru.vsu.cs.oop.lygina_p_s.figures.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuadTreeNodeParams {
+public class RectNodeParams {
     private int level;
     private List<Figure> figures;
     private Rectangle bounds;
 
-    public QuadTreeNodeParams(int level, Rectangle bounds) {
+    public RectNodeParams(int level, Rectangle bounds) {
         this.level = level;
         this.bounds = bounds;
         this.figures = new ArrayList<>();
