@@ -19,6 +19,15 @@ public abstract class QuadTreeBase<T> {
             return value;
         }
 
+        public void setValue(T value) {
+            this.value = value;
+        }
+
+        public void removeChild(int index){
+            children.remove(index);
+            children.add(null);
+        }
+
         public Node getChild(int index){
             return children.get(index);
         }
@@ -28,7 +37,14 @@ public abstract class QuadTreeBase<T> {
         }
 
         public void createChildren(){
-            this.children = new ArrayList<>(4);
+            this.children = new ArrayList<>();
+            for (int i = 0; i < 4; i++){
+                children.add(null);
+            }
+        }
+
+        public boolean hasChildren(){
+            return children != null;
         }
 
         private void clear(){
@@ -42,6 +58,12 @@ public abstract class QuadTreeBase<T> {
     public QuadTreeBase(T value) {
         this.root = new Node(value);
     }
+
+    public QuadTreeBase(){}
+
+    public abstract void insert(T value);
+
+    public abstract void remove(T value);
 //abstract methods!!!!!!!!!!!!!
     /*
     @FunctionalInterface

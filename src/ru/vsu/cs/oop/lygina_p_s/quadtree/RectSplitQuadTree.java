@@ -34,16 +34,16 @@ public class RectSplitQuadTree extends QuadTreeBase<RectNodeParams> {
         )));
     }
 
-    public void insert(Figure figure) {
-        insert(figure, root);
+    public void insertFigure(Figure figure) {
+        insertFigure(figure, root);
     }
 
-    private void insert(Figure figure, Node node) {
+    private void insertFigure(Figure figure, Node node) {
         if (!figure.isInRect(node.getValue().getBounds()))
             return;
-        if (node.getChild(0) != null){
+        if (node.hasChildren()){
             for (int i = 0; i < 4; i++){
-                insert(figure, node.getChild(i));
+                insertFigure(figure, node.getChild(i));
             }
             return;
         }
@@ -115,7 +115,7 @@ public class RectSplitQuadTree extends QuadTreeBase<RectNodeParams> {
         });
     }
 */
-    public void remove(Figure figure){
+    public void removeFigure(Figure figure){
         //if all children are empty, node.children = new Node[]
     }
 /*
@@ -150,4 +150,13 @@ public class RectSplitQuadTree extends QuadTreeBase<RectNodeParams> {
         return null;
     }
 
+    @Override
+    public void insert(RectNodeParams value) {
+
+    }
+
+    @Override
+    public void remove(RectNodeParams value) {
+
+    }
 }
