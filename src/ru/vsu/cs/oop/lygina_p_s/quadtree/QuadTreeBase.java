@@ -64,7 +64,8 @@ public abstract class QuadTreeBase<T> {
     public abstract void insert(T value);
 
     public abstract void remove(T value);
-//abstract methods!!!!!!!!!!!!!
+    //dfs, bfs!!!!!!!!!!!!!!!
+
     /*
     @FunctionalInterface
     public interface Visitor<T> {

@@ -18,6 +18,7 @@ public class Main {
         }
         tree1.remove(2);
         tree1.remove(15);
+        tree1.remove(1);
 
         RectSplitQuadTree tree = new RectSplitQuadTree(new Rectangle(0, 0, 10, 10));
         Point[] points = new Point[10];

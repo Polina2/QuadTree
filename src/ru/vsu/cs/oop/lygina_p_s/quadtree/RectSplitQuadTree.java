@@ -9,7 +9,6 @@ import java.util.List;
 public class RectSplitQuadTree extends QuadTreeBase<RectNodeParams> {
     public RectSplitQuadTree(Rectangle bounds) {
         super(new RectNodeParams(0, bounds));
-        //root = new Node(params);
     }
 
     private void split(Node node){

@@ -2,7 +2,6 @@ package ru.vsu.cs.oop.lygina_p_s.quadtree;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 public class IntegerQuadTree extends QuadTreeBase<Integer>{
 
@@ -62,13 +61,14 @@ public class IntegerQuadTree extends QuadTreeBase<Integer>{
                 remove(node.getValue(), node.getChild(0));
             }
         } else {
-            for (int i = 0; i < 4; i++){
-                if (node.getChild(i) != null){
-                    if (node.getChild(i).getValue().equals(value) && !node.getChild(i).hasChildren()){
-                        node.removeChild(i);
-                        return;
-                    } else {
-                        remove(value, node.getChild(i));
+            if (node.hasChildren()) {
+                for (int i = 0; i < 4; i++) {
+                    if (node.getChild(i) != null) {
+                        if (node.getChild(i).getValue().equals(value) &&
+                        !node.getChild(i).hasChildren())
+                            node.removeChild(i);
+                        else
+                            remove(value, node.getChild(i));
                     }
                 }
             }
