@@ -137,12 +137,14 @@ public class RectSplitQuadTree extends QuadTreeBase<RectNodeParams> {
         if (!figure.isInRect(node.getValue().getBounds())){
             return null;
         } else {
-            if (node.getChild(0) == null)
+            if (!node.hasChildren())
                 return node.getValue().getFigures();
             else {
                 for (int i = 0; i < 4; i++){
-                    if (figure.isInRect(node.getChild(i).getValue().getBounds()))
-                        return find(figure, node.getChild(i));
+                    if (node.getChild(i) != null) {
+                        if (figure.isInRect(node.getChild(i).getValue().getBounds()))
+                            return find(figure, node.getChild(i));
+                    }
                 }
             }
         }

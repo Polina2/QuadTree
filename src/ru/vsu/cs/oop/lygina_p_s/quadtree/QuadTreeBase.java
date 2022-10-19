@@ -1,7 +1,9 @@
 package ru.vsu.cs.oop.lygina_p_s.quadtree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public abstract class QuadTreeBase<T> {
     protected Node root;
@@ -64,7 +66,35 @@ public abstract class QuadTreeBase<T> {
     public abstract void insert(T value);
 
     public abstract void remove(T value);
-    //dfs, bfs!!!!!!!!!!!!!!!
+
+    public void dfs(Visitor<T> visitor){
+        dfs(visitor, root);
+    }
+
+    private void dfs(Visitor<T> visitor, Node node){
+        visitor.visit(node.getValue());
+        if (node.hasChildren()){
+            for (int i = 0; i < 4; i++) {
+                if (node.getChild(i) != null)
+                    dfs(visitor, node.getChild(i));
+            }
+        }
+    }
+
+    public void bfs(Visitor<T> visitor){
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            Node curr = queue.poll();
+            visitor.visit(curr.getValue());
+            if (curr.hasChildren()){
+                for (int i = 0; i < 4; i++){
+                    if (curr.getChild(i) != null)
+                        queue.add(curr.getChild(i));
+                }
+            }
+        }
+    }
 
     /*
     @FunctionalInterface

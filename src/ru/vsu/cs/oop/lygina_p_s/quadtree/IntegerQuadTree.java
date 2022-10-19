@@ -39,19 +39,6 @@ public class IntegerQuadTree extends QuadTreeBase<Integer>{
         remove(value, root);
     }
 
-    private Node findNode(Integer value, Node node){
-        if (node.getValue().equals(value))
-            return node;
-        else {
-            for (int i = 0; i < 4; i++){
-                if (node.getChild(i) != null){
-                    return findNode(value, node.getChild(i));
-                }
-            }
-        }
-        return null;
-    }
-
     private void remove(Integer value, Node node){
         if (node.getValue().equals(value)){
             node.setValue(node.getChild(0).getValue());

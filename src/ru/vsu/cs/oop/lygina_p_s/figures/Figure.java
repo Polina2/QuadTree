@@ -1,7 +1,5 @@
 package ru.vsu.cs.oop.lygina_p_s.figures;
 
-public class Figure {
-    public boolean isInRect(Rectangle rect) {
-        return false;
-    }
+public abstract class Figure {
+    public abstract boolean isInRect(Rectangle rect);
 }

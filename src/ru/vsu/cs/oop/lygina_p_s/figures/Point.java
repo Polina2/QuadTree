@@ -19,12 +19,13 @@ public class Point extends Figure {
 
     @Override
     public boolean isInRect(Rectangle rect) {
+        double x = getX(), y = getY();
         return x >= rect.getX() && x <= rect.getX()+ rect.getWidth() &&
                 y >= rect.getY() && y <= rect.getY()+ rect.getHeight();
     }
 
     @Override
     public String toString(){
-        return "("+x+", "+y+')';
+        return "("+getX()+", "+getY()+")";
     }
 }

@@ -12,10 +12,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
         IntegerQuadTree tree1 = new IntegerQuadTree();
         for (int i = 1; i <= 20; i++){
             tree1.insert(i);
         }
+
+        tree1.dfs(value -> {System.out.print("" + value + ' ');});
+        System.out.println();
+        tree1.bfs(value -> {System.out.print("" + value + ' ');});
+
         tree1.remove(2);
         tree1.remove(15);
         tree1.remove(1);
